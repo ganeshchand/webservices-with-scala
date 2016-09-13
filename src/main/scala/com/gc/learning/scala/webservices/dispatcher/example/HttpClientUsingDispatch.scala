@@ -1,4 +1,4 @@
-package com.gc.learning.scala.restapi.dispatcher.example
+package com.gc.learning.scala.webservices.dispatcher.example
 
 import dispatch._
 import Defaults._
@@ -10,7 +10,7 @@ import org.json4s.jackson.JsonMethods._
   */
 case class Comment(postId: String, id: Int, name: String, email: String, body: String)
 
-object SimpleRestCall {
+object HttpClientUsingDispatch {
   def main(args: Array[String]): Unit = {
 
     val targetURL = "http://jsonplaceholder.typicode.com/comments"

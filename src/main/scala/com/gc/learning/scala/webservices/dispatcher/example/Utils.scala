@@ -1,4 +1,4 @@
-package com.gc.learning.scala.restapi.dispatcher.example
+package com.gc.learning.scala.webservices.dispatcher.example
 
 /**
   * Created by ganeshchand on 9/5/16.

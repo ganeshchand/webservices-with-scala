@@ -1,4 +1,4 @@
-name := "dispatcher-example"
+name := "webservicess-with-scala"
 
 version := "1.0"
 

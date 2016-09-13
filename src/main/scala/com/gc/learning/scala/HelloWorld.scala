@@ -1,4 +1,4 @@
-package com.gc.learning.scala.restapi.dispatcher.example
+package com.gc.learning.scala
 
 object HelloWorld {
   def main(args: Array[String]): Unit = {

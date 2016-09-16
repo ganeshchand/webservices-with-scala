@@ -8,30 +8,44 @@ import org.json4s.jackson.JsonMethods._
 object Json4sExampleBasic {
     def main(args: Array[String]): Unit = {
 
-      // basic Json String parsing
+      // parse json string. It returns a JObject
 
-      val sampleJsonString =
-        """
-          |{
-          |"name": "John",
-          |"id": "123",
-          |"age": 26,
-          |"weight": 65.5
-          |}
-        """.stripMargin
-      println(sampleJsonString)
-
-      val sampleJson = parse(sampleJsonString)
-      println(sampleJson)
-      println(pretty(sampleJson))
-
+      val json = parse("""
+         { "name": "joe",
+           "address": {
+             "street": "Bulevard",
+             "city": "Helsinki"
+           },
+           "children": [
+             {
+               "name": "Mary",
+               "age": 5,
+               "birthdate": "2004-09-04T18:06:22Z"
+             },
+             {
+               "name": "Mazy",
+               "age": 3
+             }
+           ]
+         }
+       """)
+      println(json.getClass.getCanonicalName)
+      println(pretty(json)) // pretty print
 
       // retrieve a field
+      // XQuery style
+//      val ages = (json \\ "age").children.map(jInt => compact(jInt))
+//      ages.foreach(println)
 
 
-      val age = compact(sampleJson \\ "age")
-      println(s"Age is: $age")
+      val ages = for {
+        JInt(x) <- json \\ "age"
+      } yield x
 
+      println(ages.getClass.getCanonicalName)
+
+
+      /*
       // remove a field
 
       val filteredSampleJson = sampleJson removeField {
@@ -61,6 +75,7 @@ object Json4sExampleBasic {
 //      json = json transformField {
 //        case ("ht", x) => ("height", x)
 //      }
-
+*/
     }
+
 }
